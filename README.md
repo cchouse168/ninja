@@ -1,13 +1,20 @@
-🥷 格鬥忍者遊戲（PWA）##
-立即遊玩 👉 https://cchouse168.github.io/ninja/
+## 🥷 格鬥忍者遊戲
 
-📲 安裝到手機（PWA）
-Android（Chrome/Edge/Brave）：打開連結 → 等候提示 安裝應用程式，或右上角「⋮」→ 安裝應用程式 / 加到主畫面 - iPhone（Safari）：打開連結 → 共享鈕 → 加入主畫面 - 桌面 Chrome：網址列右側有 安裝 圖示，或選單中的 安裝
+**立即遊玩**  
+👉 https://cchouse168.github.io/ninja/
 
-🔗 分享給朋友
-直接分享連結：https://cchouse168.github.io/ninja/
+![預覽圖](https://cchouse168.github.io/ninja/icon/ninja.jpg)
 
-或掃描 QR Code：
+### 📲 安裝到手機（PWA）
+- **Android（Chrome/Edge/Brave）**：打開連結 → 等候提示 **安裝應用程式**，或右上角「⋮」→ **安裝應用程式** / **加到主畫面**  
+- **iPhone（Safari）**：打開連結 → 共享鈕 → **加入主畫面**  
+- **桌面 Chrome**：網址列右側有 **安裝** 圖示，或選單中的 **安裝**
+
+### 🔗 分享給朋友
+- 直接分享連結：`https://cchouse168.github.io/ninja/`
+- 或掃描 QR Code：
+
+![QR Code](https://cchouse168.github.io/ninja/icon/qr.png)
 
 
 ✨ 遊戲特色
