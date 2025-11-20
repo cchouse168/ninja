@@ -1,8 +1,8 @@
-const CACHE_NAME = 'pixel-ninja-v1';
+const CACHE_NAME = 'ninja-v1';
 const ASSETS = [
     './index.html',
     './manifest.json',
-    './icon.png',
+    'icon/ninja.ipg',
     'https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.min.js'
 ];
 
@@ -20,4 +20,5 @@ self.addEventListener('fetch', (e) => {
             return response || fetch(e.request);
         })
     );
+
 });
