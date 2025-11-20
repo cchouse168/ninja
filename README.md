@@ -4,7 +4,7 @@
 
 📱 立即遊玩 (Scan to Play)
 
-<img src="https://www.google.com/search?q=https://api.qrserver.com/v1/create-qr-code/%3Fsize%3D200x200%26data%3Dhttps://cchouse168.github.io/ninja/" alt="Scan QR Code to Play" title="Scan to Play on Mobile">
+<img src="https://www.google.com/search?q=https://api.qrserver.com/v1/create-qr-code/%3Fsize%3D200x200%26data%3Dhttps://cchouse168.github.io/ninja" alt="Scan QR Code to Play" title="Scan to Play on Mobile">
 
 
 
