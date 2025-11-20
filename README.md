@@ -1,11 +1,13 @@
-格鬥忍者(Fighting Ninja)
+🥷 格鬥忍者遊戲（PWA）##
+立即遊玩 👉 https://cchouse168.github.io/ninja/
 
-這是一款基於 HTML5 Canvas 與原生 JavaScript 開發的橫向捲軸格鬥遊戲。遊戲採用復古像素風格，並實作了高品質的視覺特效與動態音效，致敬經典動畫中的「火之神神樂」奧義。
+📲 安裝到手機（PWA）
+Android（Chrome/Edge/Brave）：打開連結 → 等候提示 安裝應用程式，或右上角「⋮」→ 安裝應用程式 / 加到主畫面 - iPhone（Safari）：打開連結 → 共享鈕 → 加入主畫面 - 桌面 Chrome：網址列右側有 安裝 圖示，或選單中的 安裝
 
-📱 立即遊玩 (Scan to Play)
+🔗 分享給朋友
+直接分享連結：https://cchouse168.github.io/ninja/
 
-<img src="https://www.google.com/search?q=https://api.qrserver.com/v1/create-qr-code/%3Fsize%3D200x200%26data%3Dhttps://cchouse168.github.io/ninja" alt="Scan QR Code to Play" title="Scan to Play on Mobile">
-
+或掃描 QR Code：
 
 
 ✨ 遊戲特色
@@ -15,12 +17,6 @@
 奧義放送：還原動畫中「火之神神樂」的烈焰流動，伴隨多層次鋸齒狀圓弧斬擊與粒子飛濺效果。
 
 新月斬擊：普通攻擊經過優化，呈現銳利且流暢的半月形刀光。
-
-📱 手機/PWA 支援：
-
-支援 PWA (Progressive Web App)，可直接「加入主畫面」變成獨立 App。
-
-人體工學虛擬按鍵：針對觸控螢幕優化，加大按鍵尺寸並調整感應區，操作手感順暢。
 
 🎵 沉浸式音效：
 
@@ -74,44 +70,5 @@ S 或 方向鍵 ↓ (需集滿能量)
 
 奧義：發動火之神神樂 (能量滿時發亮)。
 
-🚀 如何安裝與遊玩
 
-線上遊玩 (GitHub Pages)
 
-本專案已優化為靜態網頁，可直接部署於 GitHub Pages。
-
-將專案 Fork 或 Clone 到您的 GitHub。
-
-進入 Repo 的 Settings > Pages。
-
-將 Source 設定為 main 分支並儲存。
-
-使用手機瀏覽器開啟產生的網址，並選擇「加入主畫面」即可作為 App 遊玩。
-
-本地開發
-
-只需將以下檔案放在同一資料夾中，直接用瀏覽器開啟 index.html 即可：
-
-index.html (主程式)
-
-manifest.json (PWA 設定)
-
-sw.js (離線快取腳本)
-
-icon.png (App 圖示，需為正方形，建議 512x512)
-
-🛠️ 技術棧
-
-Frontend: HTML5, CSS3, Vanilla JavaScript
-
-Rendering: HTML5 Canvas API
-
-Audio: Tone.js (Web Audio API Wrapper)
-
-Deployment: GitHub Pages
-
-📄 版權說明
-
-本專案為個人練習作品，音效與程式碼均為原創或使用開源庫生成。
-
-Created with ❤️ and Burning Heart.
