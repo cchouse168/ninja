@@ -3,8 +3,8 @@ const ASSETS = [
     '/ninja/',
     './index.html',
     './manifest.json',
-    'icon/ninja-1.jpg',
-    'icon/ninja-2.jpg',
+    '/icon/ninja-1.jpg',
+    '/icon/ninja-2.jpg',
     'https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.min.js'
 ];
 
@@ -24,5 +24,6 @@ self.addEventListener('fetch', (e) => {
     );
 
 });
+
 
 
