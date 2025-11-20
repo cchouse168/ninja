@@ -1,5 +1,6 @@
 const CACHE_NAME = 'ninja-v1';
 const ASSETS = [
+    '/ninja/',
     './index.html',
     './manifest.json',
     'icon/ninja.ipg',
@@ -22,3 +23,4 @@ self.addEventListener('fetch', (e) => {
     );
 
 });
+
