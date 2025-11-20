@@ -5,8 +5,8 @@
   "start_url": "/ninja/?source=pwa",
   "scope": "/ninja/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#0ea5e9",
+  "background_color": "#000000",  <-- 啟動畫面的背景 (改成黑色)
+  "theme_color": "#000000",       <-- 手機狀態列/標題列 (改成黑色)
   "icons": [
     {
       "src": "/ninja/icon/ninja-2.jpg",
@@ -20,3 +20,4 @@
     }
   ]
 }
+
