@@ -8,6 +8,7 @@
   "background_color": "#ffffff",
   "theme_color": "#0ea5e9",
   "icons": [
-    { "src": "/ninja/icon/ninja.jpg", "sizes": "512x512", "type": "image/png" },
+    { "src": "/ninja/icon/ninja.jpg", "sizes": "512x512", "type": "image/jpg" },
   ]
 }
+
