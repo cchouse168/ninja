@@ -4,9 +4,9 @@
 
 📱 立即遊玩 (Scan to Play)
 
-<img src="https://www.google.com/search?q=https://api.qrserver.com/v1/create-qr-code/%3Fsize%3D200x200%26data%3Dhttps://your-username.github.io/your-repo-name" alt="Scan QR Code to Play" title="Scan to Play on Mobile">
+<img src="https://www.google.com/search?q=https://api.qrserver.com/v1/create-qr-code/%3Fsize%3D200x200%26data%3Dhttps://cchouse168.github.io/ninja/" alt="Scan QR Code to Play" title="Scan to Play on Mobile">
 
-注意：請將 README.md 原始碼中 QR Code 圖片連結裡的 https://your-username.github.io/your-repo-name 替換為您實際的 GitHub Pages 網址。
+
 
 ✨ 遊戲特色
 
