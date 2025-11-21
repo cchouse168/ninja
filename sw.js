@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ninja-v1';
+const CACHE_NAME = 'ninja-v2';
 const ASSETS = [
     '/ninja/',
     './index.html',
@@ -24,6 +24,7 @@ self.addEventListener('fetch', (e) => {
     );
 
 });
+
 
 
 
