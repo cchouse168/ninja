@@ -3,7 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, orientation=landscape">
-    <title>像素忍者格鬥 - 手機操控優化版</title>
+    <title>像素忍者：火之神神樂</title>
+    
+    <!-- ✅ PWA Manifest 連結 -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- PWA 元資料 -->
+    <meta name="theme-color" content="#000000">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="icon.png">
+    <link rel="icon" type="image/png" href="icon.png">
+
     <!-- 引入 Tone.js 用於生成音效 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.min.js"></script>
     <style>
@@ -168,10 +179,22 @@
             border-radius: 20px;
             background: rgba(255,255,255,0.1);
             cursor: pointer;
+            margin-top: 10px;
         }
         @keyframes blink { 50% { opacity: 0.5; } }
 
-        /* === 手機虛擬按鍵 (優化版) === */
+        /* === PWA 安裝按鈕 (預設隱藏) === */
+        #install-btn {
+            display: none; 
+            background: #ffd700;
+            color: #000;
+            font-weight: bold;
+            border: 2px solid #fff;
+            box-shadow: 0 0 15px #ffd700;
+            animation: none;
+        }
+
+        /* === 手機虛擬按鍵 === */
         #mobile-controls {
             position: absolute;
             bottom: 0;
@@ -208,7 +231,7 @@
             position: absolute;
             bottom: 15px;
             right: 20px;
-            width: 55%; /* 稍微加寬以容納調整後的按鍵 */
+            width: 55%;
             height: 100%;
             pointer-events: none;
             display: flex;
@@ -223,9 +246,9 @@
             pointer-events: auto;
         }
 
-        /* 按鍵樣式統一 */
+        /* 按鍵樣式統一：全部 80px */
         .btn {
-            width: 80px; /* 統一大小 */
+            width: 80px;
             height: 80px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.15);
@@ -258,6 +281,8 @@
         #btn-jump, #btn-attack, #btn-ult { position: static; }
 
         #btn-attack {
+            width: 80px;
+            height: 80px;
             background: rgba(255, 50, 50, 0.25);
             border-color: rgba(255, 50, 50, 0.6);
             font-size: 30px;
@@ -265,6 +290,8 @@
         #btn-attack.active { background: rgba(255, 50, 50, 0.7); }
 
         #btn-ult {
+            width: 80px;
+            height: 80px;
             background: rgba(50, 50, 50, 0.85);
             border-color: #888;
             font-size: 14px;
@@ -290,6 +317,7 @@
         /* 平板/桌面適配 */
         @media (max-width: 900px) {
             .btn { width: 68px; height: 68px; font-size: 24px; }
+            #btn-attack, #btn-ult { width: 68px; height: 68px; }
         }
 
         #orientation-hint {
@@ -330,6 +358,8 @@
     <div id="start-screen" class="overlay-screen">
         <div class="overlay-title">PIXEL NINJA</div>
         <div class="overlay-hint" id="start-btn">點擊開始 (全螢幕)</div>
+        <!-- PWA 安裝按鈕：預設隱藏，等 JS 觸發顯示 -->
+        <div class="overlay-hint" id="install-btn">⬇️ 安裝 App (PWA)</div>
     </div>
 
     <div id="result-screen" class="overlay-screen">
@@ -347,7 +377,7 @@
 
         <div id="action-area">
             <div id="action-buttons">
-                <!-- 順序：奧義 -> 斬 -> 跳 (從左到右) -->
+                <!-- 順序：奧義 (左) -> 斬 (中) -> 跳 (右) -->
                 <div class="btn" id="btn-ult">奧義<br><span>0%</span></div>
                 <div class="btn" id="btn-attack">斬</div>
                 <div class="btn" id="btn-jump">跳</div>
@@ -357,6 +387,27 @@
 </div>
 
 <script>
+    // === PWA 安裝邏輯 ===
+    let deferredPrompt;
+    const installBtn = document.getElementById('install-btn');
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        installBtn.style.display = 'block';
+        console.log('PWA install prompt intercepted');
+    });
+
+    installBtn.addEventListener('click', async () => {
+        if (deferredPrompt) {
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            console.log(`User response to install prompt: ${outcome}`);
+            deferredPrompt = null;
+            installBtn.style.display = 'none';
+        }
+    });
+
     // 註冊 Service Worker
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
