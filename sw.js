@@ -9,8 +9,8 @@ const ASSETS = [
   BASE,
   BASE + "index.html",
   BASE + "manifest.json",
-  BASE + "icon/icon-192.png",
-  BASE + "icon/icon-512.png",
+  BASE + "icon/ninja-1.png",
+  BASE + "icon/ninja-2.png",
   BASE + "icon/maskable-512.png",
 ];
 
@@ -62,3 +62,4 @@ self.addEventListener("fetch", (event) => {
     );
   }
 });
+
