@@ -5,6 +5,7 @@ const ASSETS = [
   BASE,
   BASE + "index.html",
   BASE + "manifest.json",
+  BASE + "manifest.webmanifest",
   BASE + "icon/ninja-1.jpg",
   BASE + "icon/ninja-2.jpg"
   // Tone.js 不放在 addAll，改成 fetch 時動態 cache
@@ -36,3 +37,4 @@ self.addEventListener("fetch", (e) => {
     );
   }
 });
+
