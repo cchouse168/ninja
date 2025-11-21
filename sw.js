@@ -1,40 +1,64 @@
+// ==========================
+//  PWA Service Worker
+// ==========================
 const CACHE_NAME = "ninja-v2";
-const BASE = "/ninja/";  // GitHub Pages 子路徑
+const BASE = "/ninja/";
 
+// 📌 需要被 pre-cache 的檔案（必要）
 const ASSETS = [
   BASE,
   BASE + "index.html",
   BASE + "manifest.json",
-  BASE + "manifest.webmanifest",
-  BASE + "icon/ninja-1.jpg",
-  BASE + "icon/ninja-2.jpg"
-  // Tone.js 不放在 addAll，改成 fetch 時動態 cache
+  BASE + "icon/icon-192.png",
+  BASE + "icon/icon-512.png",
+  BASE + "icon/maskable-512.png",
 ];
 
-self.addEventListener("install", (e) => {
+// ==========================
+//  install
+// ==========================
+self.addEventListener("install", (event) => {
   self.skipWaiting();
-  e.waitUntil(
+  event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS))
   );
 });
 
-self.addEventListener("activate", (e) => {
-  e.waitUntil(
+// ==========================
+//  activate
+// ==========================
+self.addEventListener("activate", (event) => {
+  event.waitUntil(
     caches.keys().then((keys) =>
-      Promise.all(keys.map((k) => k !== CACHE_NAME && caches.delete(k)))
+      Promise.all(
+        keys.map((key) =>
+          key !== CACHE_NAME ? caches.delete(key) : null
+        )
+      )
     )
   );
   self.clients.claim();
 });
 
-self.addEventListener("fetch", (e) => {
-  const url = new URL(e.request.url);
+// ==========================
+//  fetch
+// ==========================
+self.addEventListener("fetch", (event) => {
+  const url = new URL(event.request.url);
 
-  // 只處理同源請求（避免 CDN/CORS 影響）
+  // 僅處理本站資源（避免 CDN/第三方音效等被 block）
   if (url.origin === location.origin) {
-    e.respondWith(
-      caches.match(e.request).then((resp) => resp || fetch(e.request))
+    event.respondWith(
+      caches.match(event.request).then((cached) => {
+        // 快取優先（若無則抓網路）
+        return cached || fetch(event.request).then((res) => {
+          // 動態快取 tone.js / js / png / mp3 等
+          return caches.open(CACHE_NAME).then((cache) => {
+            cache.put(event.request, res.clone());
+            return res;
+          });
+        });
+      })
     );
   }
 });
-
