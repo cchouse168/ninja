@@ -3,16 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, orientation=landscape">
-    <title>像素忍者：火之神神樂</title>
-    
-    <!-- PWA 設定 -->
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#000000">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="apple-touch-icon" href="icon.png">
-    <link rel="icon" type="image/png" href="icon.png">
-
+    <title>像素忍者格鬥 - 手機操控優化版</title>
     <!-- 引入 Tone.js 用於生成音效 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.min.js"></script>
     <style>
@@ -217,7 +208,7 @@
             position: absolute;
             bottom: 15px;
             right: 20px;
-            width: 45%;
+            width: 55%; /* 稍微加寬以容納調整後的按鍵 */
             height: 100%;
             pointer-events: none;
             display: flex;
@@ -232,9 +223,10 @@
             pointer-events: auto;
         }
 
+        /* 按鍵樣式統一 */
         .btn {
-            width: 72px;
-            height: 72px;
+            width: 80px; /* 統一大小 */
+            height: 80px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.15);
             border: 2px solid rgba(255, 255, 255, 0.3);
@@ -266,8 +258,6 @@
         #btn-jump, #btn-attack, #btn-ult { position: static; }
 
         #btn-attack {
-            width: 80px;
-            height: 80px;
             background: rgba(255, 50, 50, 0.25);
             border-color: rgba(255, 50, 50, 0.6);
             font-size: 30px;
@@ -275,8 +265,6 @@
         #btn-attack.active { background: rgba(255, 50, 50, 0.7); }
 
         #btn-ult {
-            width: 80px;
-            height: 80px;
             background: rgba(50, 50, 50, 0.85);
             border-color: #888;
             font-size: 14px;
@@ -299,9 +287,9 @@
             to   { transform: scale(1.08); }
         }
 
+        /* 平板/桌面適配 */
         @media (max-width: 900px) {
-            .btn { width: 64px; height: 64px; font-size: 24px; }
-            #btn-attack, #btn-ult { width: 72px; height: 72px; }
+            .btn { width: 68px; height: 68px; font-size: 24px; }
         }
 
         #orientation-hint {
@@ -359,16 +347,17 @@
 
         <div id="action-area">
             <div id="action-buttons">
-                <div class="btn" id="btn-jump">跳</div>
-                <div class="btn" id="btn-attack">斬</div>
+                <!-- 順序：奧義 -> 斬 -> 跳 (從左到右) -->
                 <div class="btn" id="btn-ult">奧義<br><span>0%</span></div>
+                <div class="btn" id="btn-attack">斬</div>
+                <div class="btn" id="btn-jump">跳</div>
             </div>
         </div>
     </div>
 </div>
 
 <script>
-    // 註冊 Service Worker (PWA 核心)
+    // 註冊 Service Worker
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
             navigator.serviceWorker.register('./sw.js')
@@ -929,7 +918,7 @@
         player.position = { x: 150, y: 0 };
         player.velocity = { x: 0, y: 0 };
         player.isDead = false;
-        player.isHit = false;
+        player.isHit = false; // 確保重置
         player.isUltimate = false;
         player.facing = 'right';
         player.particles = [];
@@ -941,7 +930,7 @@
         enemy.position = { x: 800, y: 0 };
         enemy.velocity = { x: 0, y: 0 };
         enemy.isDead = false;
-        enemy.isHit = false; 
+        enemy.isHit = false; // === 修正：確保每一關開始時重置受傷狀態 ===
         enemy.isUltimate = false;
         enemy.color = ENEMY_COLORS[currentLevel] || ENEMY_COLORS[1];
         enemy.facing = 'left';
@@ -1081,6 +1070,7 @@
     const btnRight = document.getElementById('btn-right');
     const btnJump = document.getElementById('btn-jump');
     
+    // === 虛擬按鍵邏輯修正 ===
     dPadArea.addEventListener('touchstart', (e) => {
         e.preventDefault();
         handleDPadTouch(e.touches[0]);
