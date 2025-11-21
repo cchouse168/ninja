@@ -3,7 +3,7 @@
 **立即遊玩**  
 👉 https://cchouse168.github.io/ninja/
 
-![預覽圖](https://cchouse168.github.io/ninja/icon/ninja.jpg)
+![預覽圖](https://cchouse168.github.io/ninja/icon/ninja-1.jpg)
 
 ### 📲 安裝到手機（PWA）
 - **Android（Chrome/Edge/Brave）**：打開連結 → 等候提示 **安裝應用程式**，或右上角「⋮」→ **安裝應用程式** / **加到主畫面**  
