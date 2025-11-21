@@ -6,15 +6,17 @@
     <title>像素忍者：火之神神樂</title>
     
     <!-- ✅ PWA Manifest 連結 -->
-    <link rel="manifest" href="./manifest.json"> 
-    <link rel="apple-touch-icon" href="icon-192.png">
+    <link rel="manifest" href="/ninja/manifest.json">
+
     
+    <!-- ✅ Icons：照你現有 jpg 檔案 -->
+    <link rel="icon" type="image/jpeg" href="/ninja/icon/ninja-2.jpg">
+    <link rel="apple-touch-icon" href="/ninja/icon/ninja-2.jpg">
+
     <!-- PWA 元資料 -->
     <meta name="theme-color" content="#000000">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="apple-touch-icon" href="icon.png">
-    <link rel="icon" type="image/png" href="icon.png">
 
     <!-- 引入 Tone.js 用於生成音效 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.min.js"></script>
@@ -412,7 +414,7 @@
     // 註冊 Service Worker
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-            navigator.serviceWorker.register('./sw.js')
+            navigator.serviceWorker.register('/ninja/sw.js')
                 .then(reg => console.log('Service Worker Registered'))
                 .catch(err => console.log('Service Worker Error:', err));
         });
@@ -1186,4 +1188,5 @@
 </script>
 </body>
 </html>
+
 
